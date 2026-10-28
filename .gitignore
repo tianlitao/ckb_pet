@@ -19,6 +19,7 @@ deployment/key*.json
 # Local screenshots and editor/OS files
 **/design-preview-*.png
 **/real-preview-*.png
+/cloudflare-live-*.png
 .DS_Store
 .idea/
 .vscode/

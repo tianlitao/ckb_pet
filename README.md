@@ -13,7 +13,7 @@ PetCell 是一个部署在 CKB Testnet 上的电子宠物 dApp。每只宠物就
 - Demo（无需钱包）：https://ckb-pet.pages.dev/?demo=1
 - 测试网正式入口：https://ckb-pet.pages.dev/
 
-> README 中的在线地址在 Cloudflare Pages 首次部署成功后生效。
+> Cloudflare Pages 已于 2026-10-28 完成首次生产部署。
 
 ## 它是什么
 
