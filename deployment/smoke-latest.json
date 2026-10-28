@@ -1,0 +1,100 @@
+{
+  "network": "ckb_testnet",
+  "runId": "mvqjb6li",
+  "startedAt": "2026-10-27T10:20:17.574Z",
+  "finishedAt": "2026-10-27T10:25:28.325Z",
+  "deployerAddress": "ckt1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsqdxwp8w3w7wl6l2dphkn0qfxfr0xydzzrgag4mru",
+  "deployerLockHash": "0xc474d1300aef2a4dfd1a19bab9347ca3a2ff649b60cdf28823d2fdbfd9b2cabd",
+  "balanceBefore": "927865103954",
+  "balanceAfter": "893226128427",
+  "steps": [
+    {
+      "step": "A adopt",
+      "txHash": "0x5db102370fe674fab4fdb58883b6a683ae35ff0d9125b2b2ea63078abe89a856",
+      "block": "22878675",
+      "txIndex": "1",
+      "committed": true,
+      "outPoint": "0x5db102370fe674fab4fdb58883b6a683ae35ff0d9125b2b2ea63078abe89a856#0"
+    },
+    {
+      "step": "A feed",
+      "txHash": "0x175199a430fdc3d450f22c3ab388d239d98d06afc8b4c4f6b585f1fb0d011f44",
+      "block": "22878679",
+      "txIndex": "1",
+      "committed": true,
+      "outPoint": "0x175199a430fdc3d450f22c3ab388d239d98d06afc8b4c4f6b585f1fb0d011f44#0",
+      "consumed": "0x5db102370fe674fab4fdb58883b6a683ae35ff0d9125b2b2ea63078abe89a856#0"
+    },
+    {
+      "step": "A transfer",
+      "txHash": "0xb40ac57a962e130fe393df7a19f273042d35250a991145c65fc7e682e10bbe3c",
+      "block": "22878684",
+      "txIndex": "1",
+      "committed": true,
+      "outPoint": "0xb40ac57a962e130fe393df7a19f273042d35250a991145c65fc7e682e10bbe3c#0",
+      "consumed": "0x175199a430fdc3d450f22c3ab388d239d98d06afc8b4c4f6b585f1fb0d011f44#0"
+    },
+    {
+      "step": "B adopt",
+      "txHash": "0xa1191b4a6d777951a8ac107aa1d1f11ff5b94fdd0de57741b24f964f0bc78a46",
+      "block": "22878692",
+      "txIndex": "1",
+      "committed": true,
+      "outPoint": "0xa1191b4a6d777951a8ac107aa1d1f11ff5b94fdd0de57741b24f964f0bc78a46#0"
+    },
+    {
+      "step": "B poke -> DEAD",
+      "txHash": "0x43e748c725a8255217d0dc898c00cbf9b76aa41752387d54bad13337add3f92b",
+      "block": "22878696",
+      "txIndex": "1",
+      "committed": true,
+      "outPoint": "0x43e748c725a8255217d0dc898c00cbf9b76aa41752387d54bad13337add3f92b#0",
+      "consumed": "0xa1191b4a6d777951a8ac107aa1d1f11ff5b94fdd0de57741b24f964f0bc78a46#0"
+    },
+    {
+      "step": "B loot",
+      "txHash": "0x011e92dd72a04057413a11c286e3ce47e1aa05bb9c397f07a9893b588693c1aa",
+      "block": "22878700",
+      "txIndex": "1",
+      "committed": true,
+      "consumed": "0x43e748c725a8255217d0dc898c00cbf9b76aa41752387d54bad13337add3f92b#0"
+    },
+    {
+      "step": "C adopt",
+      "txHash": "0x389d9987013a49cba08a433cb0e1f48954ef81c1cbac8ed617753153745ba063",
+      "block": "22878704",
+      "txIndex": "1",
+      "committed": true,
+      "outPoint": "0x389d9987013a49cba08a433cb0e1f48954ef81c1cbac8ed617753153745ba063#0"
+    },
+    {
+      "step": "C euthanize",
+      "txHash": "0x26f3699722ab1c5e6ce8ec6a42b9ee5de73358c4b60eb04a44b2c19090287702",
+      "block": "22878709",
+      "txIndex": "1",
+      "committed": true,
+      "outPoint": "0x26f3699722ab1c5e6ce8ec6a42b9ee5de73358c4b60eb04a44b2c19090287702#0",
+      "consumed": "0x389d9987013a49cba08a433cb0e1f48954ef81c1cbac8ed617753153745ba063#0"
+    },
+    {
+      "step": "C loot",
+      "txHash": "0x577ae2fcd2833d82c5c44a835302ca1b6987b078653ab6cac6e8b41967acf1cb",
+      "block": "22878716",
+      "txIndex": "4",
+      "committed": true,
+      "consumed": "0x26f3699722ab1c5e6ce8ec6a42b9ee5de73358c4b60eb04a44b2c19090287702#0"
+    }
+  ],
+  "checks": [
+    "OK A adopt (self-mint + gene derivation) - 蛙蛙/戆憨",
+    "OK A feed 10 CKB - surplus 39.58 CKB",
+    "OK A transfer to stranger address - ckt1qzda0cr08m85hc...",
+    "OK A unsigned poke 1h minimum-interval guard",
+    "OK B adopt (old clock, >6 days debt) - virtual surplus 0 CKB",
+    "OK B poke -> on-chain DEAD - burn 30.00058072 CKB",
+    "OK B loot (exact dead outpoint consumed) - 0x011e92dd72a0...",
+    "OK C euthanasia burns penalty - penalty 3.958 CKB",
+    "OK C loot (exact dead outpoint consumed) - 0x577ae2fcd283..."
+  ],
+  "note": "Every listed tx was independently re-read by exact tx hash and required status=committed; every operation follows the previous operation's exact outpoint."
+}

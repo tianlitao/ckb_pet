@@ -1,0 +1,24 @@
+# Rust build artifacts
+/contracts/target/
+**/*.rs.bk
+
+# JavaScript dependencies and build output
+/node_modules
+**/node_modules/
+**/dist/
+**/*.local
+
+# Secrets and local deployment keys
+.env
+.env.*
+!.env.example
+deployment/deploy-key.json
+deployment/*-key.json
+deployment/key*.json
+
+# Local screenshots and editor/OS files
+**/design-preview-*.png
+**/real-preview-*.png
+.DS_Store
+.idea/
+.vscode/

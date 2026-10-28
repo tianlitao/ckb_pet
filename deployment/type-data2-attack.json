@@ -1,0 +1,38 @@
+{
+  "network": "ckb_testnet",
+  "checkedAt": "2026-10-27T09:47:37.898Z",
+  "productionPetType": "0x55000000100000003000000031000000b120a01d25c4f6411d6dbc9adac19b2acac2ec941cf1856c9e3d89160f948c5d01200000004e9c281d6fd4eac28408a13a43fa0473853909d5ce92c63326f1e20d4151f25d",
+  "shadowPetType": "0x55000000100000003000000031000000bc14bc825b809ab6d0c2603de493bba7c35288b07c71f28f74006f1377eb1ed1042000000096aaf01eab2652d0d91198ab60b594ddde1c0b2d24e1ca3303ba894882613573",
+  "sharedElfDataHash": "0xbc14bc825b809ab6d0c2603de493bba7c35288b07c71f28f74006f1377eb1ed1",
+  "oldClock": {
+    "number": "22856792",
+    "hash": "0xc5ced5e5f00c5f073f85a560cecbf02d6d07ccbc941ee513af5d8630aa8883b0",
+    "timestamp": "1792921205335"
+  },
+  "attackClock": {
+    "number": "22878402",
+    "hash": "0xc5c09bbef2c4808c2171d9fead8bfaf45b306094a3d86e2de85c2a6a2043ca0e",
+    "timestamp": "1793094307989"
+  },
+  "burnPerPet": "1001751469",
+  "sharedFee": "1200000000",
+  "normalPet": {
+    "outPoint": "0x88e9b0bc0b8c9ee6467c7a7c202279d0120f2b8d49aa72db1ef21ea8d582bea9#0",
+    "txHash": "0x88e9b0bc0b8c9ee6467c7a7c202279d0120f2b8d49aa72db1ef21ea8d582bea9"
+  },
+  "shadowPet": {
+    "outPoint": "0x023dcf10eef237a04e98322f66694163e241a48ab2f292421a1918a47e9771f4#0",
+    "txHash": "0x023dcf10eef237a04e98322f66694163e241a48ab2f292421a1918a47e9771f4"
+  },
+  "controls": {
+    "normalOnlyCycles": "1948518",
+    "shadowOnlyCycles": "1882729"
+  },
+  "combinedDryRun": {
+    "broadcast": false,
+    "rejected": true,
+    "errorCode": 11,
+    "source": "inputType",
+    "message": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Type, cause: ValidationFailure: see error code 11 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-type-hash/b120a01d25c4f6411d6dbc9adac19b2acac2ec941cf1856c9e3d89160f948c5d.html#11 })"
+  }
+}

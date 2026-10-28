@@ -1,0 +1,25 @@
+import { ccc } from '@ckb-ccc/core';
+import { readFileSync } from 'node:fs';
+import { randomBytes } from 'node:crypto';
+const ROOT='./';
+const c=new ccc.ClientPublicTestnet({url:'https://testnet.ckb.dev/',fallbacks:['https://testnet.ckbapp.dev/']});
+const s=new ccc.SignerCkbPrivateKey(c,JSON.parse(readFileSync('deployment/deploy-key.json','utf8')).privateKey);
+const vault=new ccc.SignerCkbPrivateKey(c,'0x'+randomBytes(32).toString('hex'));
+const vaultLock=(await vault.getAddressObjs())[0].script;
+const petTypeElf=readFileSync('contracts/target/riscv64imac-unknown-none-elf/release/pet-type');
+const petLockElf=readFileSync('contracts/target/riscv64imac-unknown-none-elf/release/pet-lock');
+const TYPE_ID_CODE_HASH='0x00000000000000000000000000000000000000000000000000545950455f4944';
+const TYPE_ID_DEP='0xec18bf0d857c981c3d1f4e17999b9b90c484b303378e94de1a57b0872f5d4602';
+const tx=ccc.Transaction.default();
+tx.cellDeps=[ccc.CellDep.from({outPoint:ccc.OutPoint.from({txHash:TYPE_ID_DEP,index:0}),depType:'code'})];
+tx.outputs=[ccc.CellOutput.from({lock:vaultLock,capacity:0n}),ccc.CellOutput.from({lock:vaultLock,capacity:0n})];
+tx.outputsData=['0x'+petTypeElf.toString('hex'),'0x'+petLockElf.toString('hex')];
+const occ=(dataLen,typeArgsLen)=>BigInt(8+dataLen+33+20+33+typeArgsLen)*100000000n;
+tx.outputs[0].capacity=occ(petTypeElf.length,32);tx.outputs[1].capacity=occ(petLockElf.length,32);
+await tx.completeInputsByCapacity(s);
+for(const [i,out] of tx.outputs.entries()) out.type=ccc.Script.from({codeHash:TYPE_ID_CODE_HASH,hashType:'type',args:await ccc.hashTypeId(tx.inputs[0],i)});
+await tx.completeFeeBy(s);
+const signed=await s.signTransaction(tx);
+console.log('inputs',signed.inputs.length,'outputs',signed.outputs.length,'deps',signed.cellDeps.map(d=>d.outPoint.txHash.slice(0,10)+'#'+d.outPoint.index),'size',signed.toBytes().length,'fee',String(await signed.getFee(c)));
+for(const [i,o] of signed.outputs.entries())console.log('out',i,'cap',String(o.capacity),'type',o.type?.codeHash,o.type?.args);
+try{console.log('ACCEPT cycles',String(await c.sendTransactionDry(signed)));}catch(e){console.log('REJECT',String(e?.message??e).slice(0,1200));}

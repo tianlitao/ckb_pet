@@ -1,0 +1,34 @@
+// PetCell on-chain data schema (reference; codecs are hand-written in
+// contracts/common/src/lib.rs and web/src/lib/molecule.ts).
+// Molecule tables serialize as [total:u32][offsets:u32×(N+1)][fields];
+// integers are little-endian.
+
+table PetData {
+    version: Uint8,          // 0
+    state: Uint8,            // 0 = ALIVE, 1 = DEAD
+    genes: Byte32,           // 32B, derived at adoption, immutable
+    birth_time: Uint64,      // ms, clock at adoption
+    last_touched: Uint64,    // ms, clock at last valid transition
+    generation: Uint32,      // 1 for adopted pets
+    breed_lock_until: Uint64, // ms, reserved for V1.1 breeding
+    name: bytes,             // <= 32 bytes
+}
+
+// MVP keeps economic parameters hardcoded in pet-type (see pet_common).
+// This schema is reserved for the V1.1 config-cell governance upgrade.
+table PetConfig {
+    version: Uint8,
+    burn_per_day: Uint64,          // shannons / day
+    min_burn: Uint64,              // shannons
+    min_poke_interval: Uint64,     // ms
+    adopt_min_surplus: Uint64,     // shannons
+    starve_line: Uint64,           // shannons, display only
+    breed_burn: Uint64,            // shannons
+    breed_cooldown: Uint64,        // ms
+    euthanasia_penalty_bp: Uint16, // basis points of post-debt surplus, burned
+}
+
+// Witness layout (raw bytes in WitnessArgs.input_type, not a molecule table):
+//   [op: Uint8][clock_header_hash: Byte32] = 33 bytes
+// op: 0=feed 1=poke 2=transfer 3=euthanize 5=adopt
+// 4=loot is reserved but unused; loot requires no witness.

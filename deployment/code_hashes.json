@@ -1,0 +1,5 @@
+{
+  "note": "code_hash = CKB personalized blake2b256(ELF), valid for Data1-style deployment. Out points must be filled in after on-chain deployment.",
+  "pet-type": "0xbc14bc825b809ab6d0c2603de493bba7c35288b07c71f28f74006f1377eb1ed1",
+  "pet-lock": "0x96aaf01eab2652d0d91198ab60b594ddde1c0b2d24e1ca3303ba894882613573"
+}

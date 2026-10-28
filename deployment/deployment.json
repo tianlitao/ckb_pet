@@ -1,0 +1,21 @@
+{
+  "network": "ckb_testnet",
+  "deployedAt": "2026-10-27T09:27:45.994Z",
+  "deployTx": "0x91e318fd6057085b1d11f2fbb69dc8d61eaac0c3949d0373a41df6047e785d42",
+  "petTypeArgs": "RFC-0032 TYPE_ID args",
+  "petType": {
+    "codeHash": "0xb120a01d25c4f6411d6dbc9adac19b2acac2ec941cf1856c9e3d89160f948c5d",
+    "hashType": "type",
+    "txHash": "0x91e318fd6057085b1d11f2fbb69dc8d61eaac0c3949d0373a41df6047e785d42",
+    "index": 0,
+    "dataBytes": 43264
+  },
+  "petLock": {
+    "codeHash": "0x4e9c281d6fd4eac28408a13a43fa0473853909d5ce92c63326f1e20d4151f25d",
+    "hashType": "type",
+    "txHash": "0x93e936e3461bff7d063162921feab37a0ed685d4fbfb3c18d962ebab6db20812",
+    "index": 1,
+    "dataBytes": 29088
+  },
+  "note": "script cells are vault-locked (key burned); references use hash_type type"
+}

@@ -1,0 +1,7 @@
+[package]
+name = "pet-common"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Host tests use the pure-Rust blake2b; contracts override features via their own dep on ckb-hash.

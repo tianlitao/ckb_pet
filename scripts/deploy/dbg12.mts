@@ -1,0 +1,13 @@
+import { ccc } from "@ckb-ccc/ccc";
+import { readFileSync } from "node:fs";
+const c = new ccc.ClientPublicTestnet({ url: "https://testnet.ckb.dev/", fallbacks: ["https://testnet.ckbapp.dev/"] });
+const { privateKey } = JSON.parse(readFileSync("deployment/deploy-key.json", "utf8"));
+const signer = new ccc.SignerCkbPrivateKey(c, privateKey);
+const lock = (await signer.getAddressObjs())[0].script;
+const tx = ccc.Transaction.default();
+tx.outputs = [ccc.CellOutput.from({ lock, capacity: 300n * 100_000_000n })];
+tx.outputsData = ["0x"];
+await tx.completeInputsByCapacity(signer, 150n * 100_000_000n);
+console.log("inputs:", tx.inputs.length, "inCap:", Number(await tx.getInputsCapacity(c)) / 1e8, "outCap:", Number(tx.getOutputsCapacity()) / 1e8);
+await tx.completeFeeBy(signer);
+console.log("after fee: inCap", Number(await tx.getInputsCapacity(c)) / 1e8, "outputs:", tx.outputs.length, "change cap:", tx.outputs[1] ? Number(tx.outputs[1].capacity) / 1e8 : "-");

@@ -1,0 +1,21 @@
+{
+  "network": "ckb_testnet",
+  "deployedAt": "2026-10-27T07:39:07.132Z",
+  "deployTx": "0x93e936e3461bff7d063162921feab37a0ed685d4fbfb3c18d962ebab6db20812",
+  "petTypeArgs": "pet-lock type-script hash",
+  "petType": {
+    "codeHash": "0x6d516c8a6ded17e913ee5cf66b82ea0894dfd78134d2b570bd18c5b9f03a6666",
+    "hashType": "type",
+    "txHash": "0x93e936e3461bff7d063162921feab37a0ed685d4fbfb3c18d962ebab6db20812",
+    "index": 0,
+    "dataBytes": 41544
+  },
+  "petLock": {
+    "codeHash": "0x4e9c281d6fd4eac28408a13a43fa0473853909d5ce92c63326f1e20d4151f25d",
+    "hashType": "type",
+    "txHash": "0x93e936e3461bff7d063162921feab37a0ed685d4fbfb3c18d962ebab6db20812",
+    "index": 1,
+    "dataBytes": 29088
+  },
+  "note": "script cells are vault-locked (key burned); references use hash_type type"
+}
